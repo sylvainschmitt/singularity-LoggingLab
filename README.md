@@ -43,3 +43,9 @@ singularity pull https://github.com/sylvainschmitt/singularity-LoggingLab/releas
     singularity: 
         "https://github.com/sylvainschmitt/singularity-LoggingLab/releases/download/0.0.1/sylvainschmitt-singularity-template.latest.sif"
 ```
+
+**test**:
+
+``` bash
+singularity run -e LoggingLab.sif Rscript test.R
+```
