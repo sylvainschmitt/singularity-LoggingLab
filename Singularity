@@ -1,25 +1,36 @@
-Bootstrap: docker
-From :  continuumio/miniconda3
-IncludeCmd : yes
-
-%files
-environment.yml
-
-%post
-apt-get update && apt-get install -y procps && apt-get clean -y
-/opt/conda/bin/conda env create -n myEnv -f /environment.yml 
-/opt/conda/bin/conda clean -a
-
-%environment
-export PATH=/opt/conda/bin:$PATH
-. /opt/conda/etc/profile.d/conda.sh
-conda activate myEnv
-
-%runscript
-echo "hello this is a template build."
-
-%help
-Tools for Snakemake template
+BootStrap: docker
+From: r-base:4.2.3
 
 %labels
-Author Sylvain Schmitt
+  Author Sylvain Schmitt
+
+%help
+  This will run LoggingLab R package
+  
+%files
+  install.R /install.R
+
+%post
+  export DEBIAN_FRONTEND=noninteractive \
+  && apt-get update -qq \
+    && apt-get install -y \
+    --no-install-recommends \
+    libudunits2-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libgdal-dev \
+    libgsl-dev \
+    libnode-dev \
+    libsodium-dev \
+    xorg \
+    libx11-dev \
+    libglu1-mesa-dev \
+    libfreetype6-dev \
+    libfontconfig1-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    cmake \
+    && Rscript install.R \
+    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
+    && rm install.R
+    

@@ -1,41 +1,51 @@
-Template Singularity container
+R and LoggingLab package
 ================
 Sylvain Schmitt
-April 28, 2021
+May 4, 2023
 
-**Bionformatics package Template**
+**R and LoggingLab package**
 
-Template is a set of utilities that Blah.
+This container includes:
 
-Template Version: X.X.X
+- R 4.0.3
+- LoggingLab (dev)
 
-\[URL\]
+`LoggingLab` is an R Package to Simulate Forest Logging.
 
-Singularity container based on the recipe: Singularity
+\[<https://github.com/VincyaneBadouard/LoggingLab>\]
+
+Singularity container based on the recipe:
+[Singularity](https://github.com/sylvainschmitt/singularity-LoggingLab/blob/main/Singularity)
 
 Package installation using Miniconda3 V4.7.12
 
 Image singularity (V\>=3.3) is automatically test and built and pushed
 on the registry using
-[test.yml](https://github.com/sylvainschmitt/singularity-template/blob/main/.github/workflows/test.yml)
+[test.yml](https://github.com/sylvainschmitt/singularity-LoggingLab/blob/main/.github/workflows/test.yml)
 &
-[builder.yml](https://github.com/sylvainschmitt/singularity-template/blob/main/.github/workflows/builder.yml)
+[builder.yml](https://github.com/sylvainschmitt/singularity-LoggingLab/blob/main/.github/workflows/builder.yml)
 
 **build**:
 
 ``` bash
-sudo singularity build Singularity img.sif
+sudo singularity build LoggingLab.sif Singularity
 ```
 
 **pull**:
 
 ``` bash
-singularity pull https://github.com/sylvainschmitt/singularity-template/releases/download/0.0.4/sylvainschmitt-singularity-template.latest.sif
+singularity pull https://github.com/sylvainschmitt/singularity-LoggingLab/releases/download/0.0.1/sylvainschmitt-singularity-template.latest.sif
 ```
 
 **snakemake**:
 
 ``` python
     singularity: 
-        "https://github.com/sylvainschmitt/singularity-template/releases/download/0.0.4/sylvainschmitt-singularity-template.latest.sif"
+        "https://github.com/sylvainschmitt/singularity-LoggingLab/releases/download/0.0.1/sylvainschmitt-singularity-template.latest.sif"
+```
+
+**test**:
+
+``` bash
+singularity run -e LoggingLab.sif Rscript test.R
 ```
