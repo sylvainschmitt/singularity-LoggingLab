@@ -5,3 +5,4 @@
 template_*
 HOWTO.html
 *.sif
+*.Rdata

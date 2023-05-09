@@ -37,27 +37,10 @@ Image singularity (V>=3.3) is automatically test and built and pushed on the reg
 [test.yml](https://github.com/sylvainschmitt/singularity-LoggingLab/blob/main/.github/workflows/test.yml) &
 [builder.yml](https://github.com/sylvainschmitt/singularity-LoggingLab/blob/main/.github/workflows/builder.yml)
 
-**build**:
-
-```{bash, echo=T, eval=F}
-sudo singularity build LoggingLab.sif Singularity
-```
-
-**pull**:
+**how to**:
 
 ```{bash, echo=T, eval=F}
 singularity pull https://github.com/sylvainschmitt/singularity-LoggingLab/releases/download/0.0.1/sylvainschmitt-singularity-template.latest.sif
+sbatch job.sh
 ```
 
-**snakemake**:
-
-```{python, echo=T, eval=F}
-    singularity: 
-        "https://github.com/sylvainschmitt/singularity-LoggingLab/releases/download/0.0.1/sylvainschmitt-singularity-template.latest.sif"
-```
-
-**test**:
-
-```{bash, echo=T, eval=F}
-singularity run -e LoggingLab.sif Rscript test.R
-```
